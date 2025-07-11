@@ -9,15 +9,20 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const LocationFilter = ({ selected, onSelect, className }) => {
+interface LocationFilterProps {
+  selected: string;
+  onSelect: (location: string) => void;
+  className?: string;
+}
+
+const LocationFilter = ({ selected, onSelect, className }: LocationFilterProps) => {
   const locations = [
-    { value: "all", label: "All Areas" },
-    { value: "downtown", label: "Downtown" },
-    { value: "uptown", label: "Uptown" },
-    { value: "suburbs", label: "Suburbs" },
-    { value: "university", label: "University Area" },
-    { value: "business", label: "Business District" },
-    { value: "residential", label: "Residential" },
+    { value: "all", label: "All Locations" },
+    { value: "1km", label: "Within 1 km" },
+    { value: "5km", label: "Within 5 km" },
+    { value: "10km", label: "Within 10 km" },
+    { value: "25km", label: "Within 25 km" },
+    { value: "50km", label: "Within 50 km" },
   ];
 
   const selectedLocation = locations.find(loc => loc.value === selected);
@@ -30,7 +35,7 @@ const LocationFilter = ({ selected, onSelect, className }) => {
           className={`bg-white/20 border-white/30 text-white hover:bg-white/30 ${className}`}
         >
           <MapPin className="h-4 w-4 mr-2" />
-          {selectedLocation?.label || "All Areas"}
+          {selectedLocation?.label || "All Locations"}
           <ChevronDown className="h-4 w-4 ml-2" />
         </Button>
       </DropdownMenuTrigger>

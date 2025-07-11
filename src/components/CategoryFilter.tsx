@@ -9,7 +9,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const CategoryFilter = ({ selected, onSelect, className }) => {
+interface CategoryFilterProps {
+  selected: string;
+  onSelect: (category: string) => void;
+  className?: string;
+}
+
+const CategoryFilter = ({ selected, onSelect, className }: CategoryFilterProps) => {
   const categories = [
     { value: "all", label: "All Categories" },
     { value: "fiction", label: "Fiction" },
